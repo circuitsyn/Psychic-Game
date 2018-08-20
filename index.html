@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  </head>
+  <body>
+      
+    <!--Main Intro Header-->
+    <div class="jumbotron">
+        <h1 class="display-4 backgroundcol">Digital Mind Reading Challenge</h1>
+        <br>
+        <p class="lead backgroundcol">Welcome To the Digital Palm Reading Main Event!</p>
+        <hr class="my-4">
+        <p class="backgroundcol">Pick a letter to see if you can guess which letter I am thinking about.</p>
+        <br>
+        <p class="backgroundcol">Are you Game?</p>
+        <!-- <p class="lead">
+        </p> -->
+      </div>
+
+    <!--Status Cards-->
+  <container>
+    <div class="card-deck">
+      <div class="card  col-md-2 mx-auto">
+        <img class="card-img-top imgSizing" src="assets/images/wins.png" alt="Wins Image">
+        <div class="card-body">
+          <h5 class="card-title">Wins</h5>
+          <p class="card-text">Current Count:</p><p id="winCount"> </p>
+        </div>
+      </div>
+      <div class="card  col-md-2 mx-auto">
+        <img class="card-img-top" src="assets/images/losses.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Losses</h5>
+          <p class="card-text">Current Count:</p><p id="lossCount"> </p>
+        </div>
+      </div>
+      <div class="card  col-md-2 mx-auto">
+        <img class="card-img-top" src="assets/images/guesses.png" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Guesses Left</h5>
+          <p class="card-text">Current Count:</p><p id="guessCount"> </p>
+        </div>
+      </div>
+      <div class="card  col-md-2 mx-auto">
+        <img class="card-img-top" src="assets/images/jumble.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Current Letters Chosen</h5>
+          <p class="card-text">Picked So Far:</p><p id="tries"> </p>
+        </div>
+      </div>
+    </div>
+  </container>
+  <p id="guessCount"> </p>
+
+    <script type="text/javascript">
+
+    
+    var computerChoices = "abcdefghijklmnopqrstuvwxyz".split("");
+    var userGuess;
+    var winCountInput = 0;
+    var lossCountInput = 0;
+    var guessesLeft = 9;
+    var guessesSoFar = [];
+    var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    console.log(computerRandom);
+    document.onkeyup = function(event){
+		
+    // stores keypress in userGuess
+        
+        var userGuess = event.key.toLowerCase();
+        guessesSoFar.push(userGuess); 
+        console.log("userGuess = " + userGuess);
+        console.log("guessesSoFar = " + guessesSoFar);
+
+    if (guessesLeft === 0) {
+      guessesLeft = 9;
+      guessesSoFar.length = 0; 
+      winCountInput = 0; 
+      // var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    }
+    else if (userGuess == computerRandom) {
+      winCountInput++;
+      guessesLeft = 9;
+      document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
+      guessesSoFar.length = 0; //resets array to zero
+      // var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+    }
+    else if (userGuess !== computerRandom) {
+      lossCountInput++;
+      guessesLeft--;
+      document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
+    }
+    else {
+      alet("Make sure you choose a letter!");
+    }
+
+
+    document.getElementById("winCount").innerHTML = winCountInput;
+    document.getElementById("lossCount").innerHTML = lossCountInput;
+    document.getElementById("guessCount").innerHTML = guessesLeft;
+    
+
+    }
+    
+    
+    </script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+  </body>
+</html>

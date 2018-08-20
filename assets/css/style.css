@@ -1,0 +1,22 @@
+.jumbotron {
+    background-image: url("../images/telepathy.jpg") !important;
+    color: #fff;
+    background-color: black !important;
+    border-bottom: solid white 2px;
+}
+
+body {
+    background-color: #282828 !important;
+}
+
+.backgroundcol {
+    background-color: black;
+    display:inline-block;
+    padding: 5px 20px 15px 20px;
+    border-radius: 25px 25px;
+    border: solid white 2px;
+    
+    
+    
+}
+
