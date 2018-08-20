@@ -79,10 +79,17 @@
         console.log("userGuess = " + userGuess);
         console.log("guessesSoFar = " + guessesSoFar);
 
+    //else if (guessesSoFar.includes(userGuess)){
+    //   alert("You chose that letter already!");
+    // }
+
+
+    
     if (guessesLeft === 0) {
       guessesLeft = 9;
       guessesSoFar.length = 0; 
-      winCountInput = 0; 
+      winCountInput = 0;
+      lossCountInput++; 
       // var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     }
     else if (userGuess == computerRandom) {
@@ -93,10 +100,10 @@
       // var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
     }
     else if (userGuess !== computerRandom) {
-      lossCountInput++;
       guessesLeft--;
       document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
     }
+    
     else {
       alet("Make sure you choose a letter!");
     }
