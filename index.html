@@ -77,7 +77,7 @@
         var userGuess = event.key.toLowerCase();
         guessesSoFar.push(userGuess); 
         console.log("userGuess = " + userGuess);
-        console.log("guessesSoFar = " + guessesSoFar);
+        
 
     //else if (guessesSoFar.includes(userGuess)){
     //   alert("You chose that letter already!");
@@ -97,7 +97,9 @@
       guessesLeft = 9;
       document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
       guessesSoFar.length = 0; //resets array to zero
-      // var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      console.log(computerRandom);
+      
     }
     else if (userGuess !== computerRandom) {
       guessesLeft--;
