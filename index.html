@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="assets/images/brainfav.png">
   </head>
   <body>
       
@@ -74,41 +75,42 @@
 		
     // stores keypress in userGuess
         
-        var userGuess = event.key.toLowerCase();
-        guessesSoFar.push(userGuess); 
-        console.log("userGuess = " + userGuess);
+    var userGuess = event.key.toLowerCase();
+    
+    console.log("userGuess = " + userGuess);
         
 
-    //else if (guessesSoFar.includes(userGuess)){
-    //   alert("You chose that letter already!");
-    // }
+   
+    //Nested loop created to create gateway to program logic  
+    if(computerChoices.includes(userGuess)) {
 
-
-    
-    if (guessesLeft === 0) {
+      guessesSoFar.push(userGuess); 
+      console.log(computerChoices.includes(userGuess));
+      if (guessesLeft === 0) {
       guessesLeft = 9;
       guessesSoFar.length = 0; 
       winCountInput = 0;
       lossCountInput++; 
-      // var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+      }
+      else if (userGuess == computerRandom) {
+        winCountInput++;
+        guessesLeft = 9;
+        document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
+        guessesSoFar.length = 0; //resets array to zero
+        computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+        console.log(computerRandom);
+        
+      }
+      else if (userGuess !== computerRandom) {
+        guessesLeft--;
+        document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
+      }
     }
-    else if (userGuess == computerRandom) {
-      winCountInput++;
-      guessesLeft = 9;
-      document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
-      guessesSoFar.length = 0; //resets array to zero
-      computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-      console.log(computerRandom);
-      
-    }
-    else if (userGuess !== computerRandom) {
-      guessesLeft--;
-      document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
-    }
-    
     else {
-      alet("Make sure you choose a letter!");
+      alert("You must choose a lowercase letter of the alphabet! Try Again :)");
+      userGuess = null;
     }
+   
 
 
     document.getElementById("winCount").innerHTML = winCountInput;
