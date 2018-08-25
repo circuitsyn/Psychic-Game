@@ -59,78 +59,13 @@
     </div>
   <!-- </div> -->
 
-  <p id="guessCount"> </p>
-
-    <script type="text/javascript">
-
-    
-    var computerChoices = "abcdefghijklmnopqrstuvwxyz".split("");
-    var userGuess;
-    var winCountInput = 0;
-    var lossCountInput = 0;
-    var guessesLeft = 9;
-    var guessesSoFar = [];
-    var computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-    console.log(computerRandom);
-    document.onkeyup = function(event){
-		
-    // stores keypress in userGuess
-        
-    var userGuess = event.key.toLowerCase();
-    
-    console.log("userGuess = " + userGuess);
-        
-
-   
-    //Nested loop created to create gateway to program logic  
-    if(computerChoices.includes(userGuess)) {
-
-      guessesSoFar.push(userGuess); 
-      console.log(computerChoices.includes(userGuess));
-      if (guessesLeft === 0) {
-      guessesLeft = 9;
-      guessesSoFar.length = 0; 
-      winCountInput = 0;
-      lossCountInput++; 
-      }
-      else if (userGuess == computerRandom) {
-        winCountInput++;
-        guessesLeft = 9;
-        document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
-        guessesSoFar.length = 0; //resets array to zero
-        computerRandom = computerChoices[Math.floor(Math.random() * computerChoices.length)];
-        console.log(computerRandom);
-        
-      }
-      else if (userGuess !== computerRandom) {
-        guessesLeft--;
-        document.getElementById("tries").innerHTML = (guessesSoFar + ", ");
-      }
-    }
-    else {
-      alert("You must choose a lowercase letter of the alphabet! Try Again :)");
-      
-    }
-   
-
-
-    document.getElementById("winCount").innerHTML = winCountInput;
-    document.getElementById("lossCount").innerHTML = lossCountInput;
-    document.getElementById("guessCount").innerHTML = guessesLeft;
-    
-
-    }
-    
-    
-    </script>
-
-
-
+  
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <!--Linking Custom JS file-->
     <script type="text/javascript" src="assets/javascript/game.js" ></script>
   </body>
 </html>
